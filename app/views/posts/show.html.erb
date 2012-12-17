@@ -1,0 +1,16 @@
+<h3>This is the Show Comment Page</h3>
+
+<p>
+  <%= link_to @post.title, @post.url %>
+  <br/>
+  <%= link_to pluralize(@post.comments.count, "comment"), post_path(@post) %>
+  </li>
+</p>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+      <li>
+        <%= comment.body %>
+      </li>
+  <% end %>
+</ul>
