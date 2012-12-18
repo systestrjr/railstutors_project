@@ -2,8 +2,7 @@
 
 <p>
   <%= link_to @post.title, @post.url %>
-  <br/>
-  <%= link_to pluralize(@post.comments.count, "comment"), post_path(@post) %>
+  <%= "(#{pluralize(@post.comments.count, 'comment' )})"  %>
   </li>
 </p>
 
