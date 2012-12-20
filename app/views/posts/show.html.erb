@@ -13,3 +13,14 @@
       </li>
   <% end %>
 </ul>
+
+<p>
+ <h5>Create comments here</h5>
+ <%= form_for [@post, @comment]  do |f| %>
+    <%= f.label :body %>
+    <%= f.text_area :body, rows: 5%>
+    <br/>
+    <%= f.submit "Go" %>
+ <% end %>
+
+</p>

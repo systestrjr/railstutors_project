@@ -1,0 +1,9 @@
+<h3> This is a new Post page </h3>
+
+<%= form_for(@post) do |f| %>
+    <%= f.label :url,"URL" %>
+    <%= f.text_field :url %>   <br/>
+    <%= f.label :title %>
+    <%= f.text_field :title %>     <br/>
+    <%= f.submit 'Go!' %>
+<% end %>
