@@ -3,6 +3,7 @@ CourseProject::Application.routes.draw do
   #match '/show',  to: 'posts#show'
   resources :posts do
     resources :comments
+    resources :votes
   end
 
 end

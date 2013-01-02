@@ -4,6 +4,13 @@
   <% @posts.each do |post| %>
       <li>
         <%= link_to post.title, post.url %>
+        <%= link_to post_votes_path(post, vote_indicator: "up"),:method => :post do %>
+          <i class="icon-thumbs-up"></i>
+        <% end %>
+        <span><%= post.vote_number %></span>
+        <%= link_to post_votes_path(post, vote_indicator: "down"),:method => :post do %>
+            <i class="icon-thumbs-down"></i>
+        <% end %>
         <br/>
         <%= link_to pluralize(post.comments.count, "comment"), post_path(post) %>
       </li>

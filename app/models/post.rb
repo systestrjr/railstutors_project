@@ -3,4 +3,10 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
+  has_many :votes
+
+  def vote_number
+    votes.where(vote_indicator: "up").count - votes.where(vote_indicator: "down").count
+  end
+
 end

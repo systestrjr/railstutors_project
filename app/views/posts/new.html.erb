@@ -1,5 +1,4 @@
-<h3> This is a new Post page </h3>
-
+<h3> This is a new Post area using form_for </h3>
 <%= form_for(@post) do |f| %>
     <%= f.label :url,"URL" %>
     <%= f.text_field :url %>   <br/>
@@ -7,3 +6,14 @@
     <%= f.text_field :title %>     <br/>
     <%= f.submit 'Go!' %>
 <% end %>
+
+<!--<h3> This is a new Post area using form_tag</h3>-->
+<!--<%= form_tag("/posts") do %>-->
+    <!--<%= label_tag(:url, "URL:") %>-->
+    <!--<%= text_field_tag "post[url]" %>-->
+    <!--<br/>-->
+    <!--<%= label_tag(:title, "Title:") %>-->
+    <!--<%=  text_field_tag "post[title]"  %>-->
+    <!--<br/>-->
+    <!--<%= submit_tag "Go!" %>-->
+<!--<% end %>-->
