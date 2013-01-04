@@ -1,7 +1,9 @@
-<h3>This is the Show Comment Page</h3>
+<%= link_to "HOME", posts_path %>
+
+<h3>Show Comment Page</h3>
 
 <p>
-  <%= link_to @post.title, @post.url %>
+  <%= prepend_http(@post) %>
   <%= "(#{pluralize(@post.comments.count, 'comment')})" %>
   </li>
 </p>
@@ -15,23 +17,16 @@
 </ul>
 
 <p>
-<h5>Create comments here using form_for</h5>
-<%= form_for [@post, @comment] do |f| %>
+  <%= form_for [@post, @comment] do |f| %>
+      <!--<% if @post.errors.any? %>-->
+        <!--<div class='alert alert-error'>-->
+          <!--<%= @post.errors.full_messages.join("<br/>").html_safe %>-->
+        <!--</div>-->
+    <!--<% end %>-->
     <%= f.label :body %>
     <%= f.text_area :body, rows: 5 %>
     <br/>
     <%= f.submit "Go" %>
-<% end %>
-
-yo
-
-<h5>Create comments here using form_tag</h5>
-<%= @post2 = Post.create(params[:post]) %>
-<%= form_tag("/posts/1/comments") do %>
-    <%= label_tag(:body, "Body:") %>
-    <%= text_area_tag "comment[body]"  %>
-    <br/>
-    <%= submit_tag("Go") %>
 <% end %>
 </p>
 

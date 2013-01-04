@@ -11,6 +11,13 @@ class CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     post.comments.create(params[:comment])
 
-    redirect_to post_path(post)
+    if post.save
+      redirect_to post_path(post)
+    else
+      flash[:alert] = "Your post could not be saved: " +
+          post.errors.full_messages.to_sentence
+      #render 'new'
+      redirect_to post_path(post)
+    end
   end
 end

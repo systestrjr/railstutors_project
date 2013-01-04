@@ -1,3 +1,6 @@
+require File.expand_path(File.join(File.dirname(__FILE__), '..' , 'helpers' , 'posts_helper'))
+include PostsHelper
+
 class PostsController < ApplicationController
 
   def index
@@ -16,7 +19,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(params[:post])
-    redirect_to posts_path
+    @post = Post.create(params[:post])
+
+    if @post.save
+      redirect_to posts_path
+    else
+      render 'new'
+    end
   end
 end
