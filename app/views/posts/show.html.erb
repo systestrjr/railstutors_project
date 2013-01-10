@@ -1,5 +1,6 @@
 <%= link_to "HOME", posts_path %>
 
+
 <h3>Show Comment Page</h3>
 
 <p>
@@ -18,15 +19,13 @@
 
 <p>
   <%= form_for [@post, @comment] do |f| %>
-      <!--<% if @post.errors.any? %>-->
-        <!--<div class='alert alert-error'>-->
-          <!--<%= @post.errors.full_messages.join("<br/>").html_safe %>-->
-        <!--</div>-->
-    <!--<% end %>-->
-    <%= f.label :body %>
-    <%= f.text_area :body, rows: 5 %>
-    <br/>
-    <%= f.submit "Go" %>
-<% end %>
+
+      <%= render 'shared/error_messages', object: @comment %>
+
+      <%= f.label :body %>
+      <%= f.text_area :body, rows: 5 %>
+      <br/>
+      <%= f.submit "Go" %>
+  <% end %>
 </p>
 
