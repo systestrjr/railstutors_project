@@ -2,6 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..' , 'helpers' , 'p
 include PostsHelper
 
 class PostsController < ApplicationController
+  before_filter :require_user, except: [:index]
 
   def index
     @posts = Post.all
@@ -19,10 +20,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(params[:post])
+    @post = Post.new(params[:post])
 
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, notice: 'Post was created successfully'
     else
       render 'new'
     end

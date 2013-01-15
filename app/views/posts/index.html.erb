@@ -18,9 +18,9 @@
 </ul>
 
 <br/>
-<p>
+<% if logged_in? %>
   <%= link_to "Submit a new post", new_post_path %>
-</p>
+<% end %>
 
 
 

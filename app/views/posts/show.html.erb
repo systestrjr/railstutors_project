@@ -1,5 +1,4 @@
-<%= link_to "HOME", posts_path %>
-
+<%= render 'shared/error_messages', object: @comment %>
 
 <h3>Show Comment Page</h3>
 
@@ -19,8 +18,6 @@
 
 <p>
   <%= form_for [@post, @comment] do |f| %>
-
-      <%= render 'shared/error_messages', object: @comment %>
 
       <%= f.label :body %>
       <%= f.text_area :body, rows: 5 %>
