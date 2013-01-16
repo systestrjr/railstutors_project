@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_user_name_from_id user_id
-    comment_user = User.find_by_id(user_id.to_i)
-    comment_user.name
+    User.find_by_id(user_id)
   end
 end
