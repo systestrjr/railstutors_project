@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?, :get_user_name_from_id
+  helper_method :current_user, :logged_in?
   protect_from_forgery
 
   def current_user
@@ -16,7 +16,5 @@ class ApplicationController < ActionController::Base
      end
   end
 
-  def get_user_name_from_id user_id
-    User.find_by_id(user_id)
-  end
+
 end

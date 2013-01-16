@@ -12,10 +12,9 @@
   <% @post.comments.each do |comment| %>
       <li>
         <%= comment.body %>
-        (Commented by:
-        <%= comment.user_id %>
+        ( Comment by:
+        <%= User.find_by_id(comment.user_id).name.to_s.capitalize %>
         )
-        <%= get_user_name_from_id(comment.user_id) %>
 
       </li>
   <% end %>
