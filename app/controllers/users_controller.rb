@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -12,6 +13,9 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def show
+    @user = User.where(:username => params[:id]).first
   end
 end

@@ -4,11 +4,19 @@
   <% @posts.each do |post| %>
       <li>
         <%= prepend_http(post) %>
-        <%= link_to post_votes_path(post, vote_indicator: "up"),:method => :post do %>
-          <i class="icon-thumbs-up"></i>
+        <% if logged_in? %>
+            <%= link_to post_votes_path(post, vote_indicator: "up"), :method => :post do %>
+                <i class="icon-thumbs-up"></i>
+            <% end %>
+        <% else %>
+            <i class="icon-thumbs-up"></i>
         <% end %>
         <span><%= post.vote_number %></span>
-        <%= link_to post_votes_path(post, vote_indicator: "down"),:method => :post do %>
+        <% if logged_in? %>
+            <%= link_to post_votes_path(post, vote_indicator: "down"), :method => :post do %>
+                <i class="icon-thumbs-down"></i>
+            <% end %>
+        <% else %>
             <i class="icon-thumbs-down"></i>
         <% end %>
         <br/>
@@ -19,7 +27,7 @@
 
 <br/>
 <% if logged_in? %>
-  <%= link_to "Submit a new post", new_post_path %>
+    <%= link_to "Submit a new post", new_post_path %>
 <% end %>
 
 

@@ -12,17 +12,34 @@
   <% @post.comments.each do |comment| %>
       <li>
         <%= comment.body %>
+        (Commented by:
+        <%= comment.user_id %>
+        )
+        <%= get_user_name_from_id(comment.user_id) %>
+
       </li>
   <% end %>
 </ul>
 
-<p>
-  <%= form_for [@post, @comment] do |f| %>
+<% if logged_in? %>
+    <p>
+      <%= form_for [@post, @comment] do |f| %>
 
-      <%= f.label :body %>
-      <%= f.text_area :body, rows: 5 %>
-      <br/>
-      <%= f.submit "Go" %>
-  <% end %>
-</p>
+          <%= f.label :body %>
+          <%= f.text_area :body, rows: 5 %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <br/>
+          <%= f.submit "Go" %>
+      <% end %>
+    </p>
+<% end %>
 
+<% if !logged_in? %>
+    <p>
+      User needs to
+      <%= link_to "Register", register_path %>
+      and/or
+      <%= link_to "Login", login_path %>
+      to be able to comment
+    </p>
+<% end %>

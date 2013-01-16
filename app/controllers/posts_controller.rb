@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..' , 'helpers' , 'p
 include PostsHelper
 
 class PostsController < ApplicationController
-  before_filter :require_user, except: [:index]
+  before_filter :require_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -10,9 +10,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    #@comment = @post.comments.new
     @comment = Comment.new
-    #redirect_to post_comments_path
+    #@user = @comment.user_id
   end
 
   def new
