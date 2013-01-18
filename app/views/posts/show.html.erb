@@ -15,7 +15,7 @@
         ( Comment by:
         <% commenters_name = User.find_by_id(comment.user_id).name.to_s.capitalize %>
         <% commenters_user_id = User.find_by_id(comment.user_id).id %>
-        <%= link_to commenters_name, profile_path(commenters_user_id) %>
+        <%= link_to commenters_name, user_path(commenters_user_id) %>
         )
 
       </li>

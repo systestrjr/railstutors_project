@@ -4,7 +4,7 @@
 <% if logged_in? %>
     Welcome <%= current_user.name.capitalize %>
     |
-    <%= link_to "View User Profile", profile_path(current_user.id) %>
+    <%= link_to "View User Profile", user_path(current_user.id) %>
     |
     <%= link_to "Logout", logout_path %>
 <% else %>
